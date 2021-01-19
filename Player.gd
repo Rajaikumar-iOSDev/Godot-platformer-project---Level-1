@@ -21,15 +21,15 @@ func _physics_process(delta):
 	vel.x = 0
 	
 	# - Movement inputs
-	if Input.is_action_pressed("move_left")and is_on_floor():
+	if Input.is_action_pressed("move_left"):
 		footStepsAudio.play()
 		vel.x -= speed
-	if Input.is_action_pressed("move_right")and is_on_floor():
+	elif Input.is_action_pressed("move_right"):
 		footStepsAudio.play()
 		vel.x += speed
-	if Input.is_action_just_released("move_left"):
+	elif Input.is_action_just_released("move_left"):
 		footStepsAudio.stop()
-	if Input.is_action_just_released("move_right"):
+	elif Input.is_action_just_released("move_right"):
 		footStepsAudio.stop()
 		
 	# - Applying velocity
