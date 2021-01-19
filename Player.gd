@@ -13,13 +13,25 @@ var vel : Vector2 = Vector2()
  
 onready var sprite : Sprite = get_node("Sprite")
 
+onready var footStepsAudio = $"AudioEffect/FootStepsAudioPlayer"
+
+
+
 func _physics_process(delta):
 	vel.x = 0
+	
 	# - Movement inputs
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("move_left")and is_on_floor():
+		footStepsAudio.play()
 		vel.x -= speed
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("move_right")and is_on_floor():
+		footStepsAudio.play()
 		vel.x += speed
+	if Input.is_action_just_released("move_left"):
+		footStepsAudio.stop()
+	if Input.is_action_just_released("move_right"):
+		footStepsAudio.stop()
+		
 	# - Applying velocity
 	vel = move_and_slide(vel,Vector2.UP)
 	# - Gravity
@@ -27,6 +39,8 @@ func _physics_process(delta):
 	# Jump input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		vel.y -= jumpForce
+	if Input.is_action_just_released("jump"):
+		footStepsAudio.stop()
 		
 	# - Sprite direction
 	if vel.x < 0:

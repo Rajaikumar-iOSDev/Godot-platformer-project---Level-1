@@ -1,13 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Player_Idle.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Audio/Intro Theme.wav" type="AudioStream" id=3]
+[ext_resource path="res://Audio/Foot Steps.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 33.6913, 33.7383 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
+
+[node name="AudioEffect" type="Node" parent="."]
+
+[node name="BackgroundScorePlayer" type="AudioStreamPlayer2D" parent="AudioEffect"]
+stream = ExtResource( 3 )
+
+[node name="FootStepsAudioPlayer" type="AudioStreamPlayer2D" parent="AudioEffect"]
+stream = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
