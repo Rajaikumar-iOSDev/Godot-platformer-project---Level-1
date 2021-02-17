@@ -1,5 +1,5 @@
 # 🏃🏿‍♂️Godot-platformer-project---Level-1
- Simple platformer concept created with just movement and collision.
+ Simple platformer concept created with camera movement and collision.
  
  ## 🥞Tech stack
  Godot engine & GDScript.
